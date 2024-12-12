@@ -1,0 +1,240 @@
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.sky {
+    background: linear-gradient(to bottom, #1a1a56, #800080); 
+    height: 70%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+    opacity: 0.8;
+}
+
+.star:nth-child(odd) {
+    animation-duration: 3s;
+}
+
+.star:nth-child(even) {
+    animation-duration: 4s;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(1.2);
+    }
+}
+
+
+.ground {
+    background: #2E8B57; 
+    height: 30%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5); 
+    border-radius: 50%;
+    box-shadow: 30px 30px 0 0 rgba(255, 255, 255, 0.5), -30px 30px 0 0 rgba(255, 255, 255, 0.5);
+    width: 100px;
+    height: 50px;
+    top: 10%;
+    animation: float 10s linear infinite;
+}
+
+.cloud:nth-child(2) {
+    top: 20%;
+    left: 60%;
+    animation-duration: 12s;
+}
+
+@keyframes float {
+    from {
+        transform: translateX(-150%);
+    }
+    to {
+        transform: translateX(150%);
+    }
+}
+
+
+.pokeball {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: throwPokeball 2s ease-out forwards;
+    z-index: 2;
+}
+
+.charizard-ball {
+    bottom: 100px;
+    left: 50px;
+    background: url('https://img.pokemondb.net/sprites/items/dive-ball.png') no-repeat;
+    background-size: contain;
+    animation-delay: 0.5s;
+}
+
+.raichu-ball {
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('https://img.pokemondb.net/sprites/items/quick-ball.png') no-repeat;
+    background-size: contain;
+    animation-delay: 1.5s;
+}
+
+.gyarados-ball {
+    bottom: 100px;
+    right: 50px;
+    background: url('https://img.pokemondb.net/sprites/items/ultra-ball.png') no-repeat;
+    background-size: contain;
+    animation-delay: 2.5s;
+}
+
+
+@keyframes throwPokeball {
+    0% {
+        bottom: 100px;
+        opacity: 1;
+    }
+    50% {
+        bottom: 300px; /* Підстрибує */
+    }
+    100% {
+        bottom: 100px;
+        opacity: 0; /* Зникає */
+    }
+}
+
+
+.pokemon.charizard {
+    position: absolute;
+    bottom: 100px;
+    left: 120px;
+    width: 150px;
+    height: 150px;
+    background: url('https://img.pokemondb.net/sprites/black-white/anim/normal/charizard.gif') no-repeat;
+    background-size: contain;
+    opacity: 0; 
+    animation: appearCharizard 2s ease-out forwards, jumpCharizard 1.5s ease-in-out infinite;
+    animation-delay: 2s; /* Поява після покебола */
+}
+
+
+.pokemon.raichu {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: url('https://img.pokemondb.net/sprites/black-white/anim/normal/raichu.gif') no-repeat;
+    background-size: contain;
+    opacity: 0; 
+    animation: appearRaichu 2s ease-out forwards, jumpRaichu 1.5s ease-in-out infinite;
+    animation-delay: 3.5s; 
+}
+
+
+.pokemon.gyarados {
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+    width: 150px;
+    height: 150px;
+    background: url('https://img.pokemondb.net/sprites/black-white/anim/normal/gyarados.gif') no-repeat;
+    background-size: contain;
+    opacity: 0; 
+    animation: appearGyarados 2s ease-out forwards, jumpGyarados 1.5s ease-in-out infinite;
+    animation-delay: 4.5s; 
+}
+
+
+@keyframes appearCharizard {
+    0% {
+        opacity: 0;
+        transform: scale(0.5); 
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); 
+    }
+}
+
+@keyframes jumpCharizard {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px); 
+    }
+}
+
+@keyframes appearRaichu {
+    0% {
+        opacity: 0;
+        transform: scale(0.5); 
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); 
+    }
+}
+
+@keyframes jumpRaichu {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px); 
+    }
+}
+
+@keyframes appearGyarados {
+    0% {
+        opacity: 0;
+        transform: scale(0.5); 
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); 
+    }
+}
+
+@keyframes jumpGyarados {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px); 
+    }
+}
